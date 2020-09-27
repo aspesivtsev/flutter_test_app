@@ -5,13 +5,21 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  var questionIndex = 0;
+
   void answerQuestion() {
-    print("Answer chosen!");
+    questionIndex++;
+    print("Q index is " + questionIndex.toString());
   }
 
   @override
   Widget build(BuildContext context) {
-    var questions = ["How are you", "What is your name"];
+    var questions = [
+      "How are you?",
+      "What is your name?",
+      "How old are you?",
+    ];
+
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -20,7 +28,9 @@ class MyApp extends StatelessWidget {
         body: Column(
           children: <Widget>[
             Text(
-                "This is a very long question to ask, so we need to check how it is shown on the screen!"),
+              questions.elementAt(
+                  questionIndex), //this is equivalent to "questions[questionIndex],"
+            ),
             RaisedButton(
               child: Text("Answer 1"),
               onPressed: answerQuestion,
