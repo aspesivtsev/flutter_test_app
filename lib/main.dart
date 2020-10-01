@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import './question.dart';
+import './answer.dart';
 
 void main() {
   runApp(MyApp());
@@ -7,19 +9,19 @@ void main() {
 class MyApp extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return MyAppState();
+    return _MyAppState();
   }
 }
 
-class MyAppState extends State<MyApp> {
-  var questionIndex = 0;
+class _MyAppState extends State<MyApp> {
+  var _questionIndex = 0;
 
-  void answerQuestion() {
+  void _answerQuestion() {
     setState(() {
-      questionIndex++;
+      _questionIndex++;
     });
 
-    print("Q index is " + questionIndex.toString());
+    print("Q index is " + _questionIndex.toString());
   }
 
   @override
@@ -27,23 +29,30 @@ class MyAppState extends State<MyApp> {
     var questions = [
       "How are you?",
       "What is your name?",
-      "How old are you?",
+      "This is a very very very long question just for testing purposes!",
     ];
 
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
           title: Text("Serious mobile application"),
+          centerTitle: true,
+          backgroundColor: Colors.pink,
+          //backgroundColor: Color(0xFF151026),
         ),
         body: Column(
           children: <Widget>[
-            Text(
+            Question(
               questions.elementAt(
-                  questionIndex), //this is equivalent to "questions[questionIndex],"
+                  _questionIndex), //this is equivalent to "questions[questionIndex],"
             ),
-            RaisedButton(
-              child: Text("Answer 1"),
-              onPressed: answerQuestion,
+            SizedBox(
+              width: double.infinity,
+              child: RaisedButton(
+                child: Text("Answer 1"),
+                onPressed: _answerQuestion,
+                color: Colors.limeAccent[400],
+              ),
             ),
             RaisedButton(
               child: Text("Answer 2"),
