@@ -1,0 +1,19 @@
+SizedBox(
+              width: double.infinity,
+              child: RaisedButton(
+                child: Text("Answer 1"),
+                onPressed: _answerQuestion,
+                color: Colors.limeAccent[400],
+              ),
+            ),
+            RaisedButton(
+              child: Text("Answer 2"),
+              onPressed: () => print("Answer 2 is chosen!"),
+            ),
+            RaisedButton(
+              child: Text("Answer 3"),
+              onPressed: () {
+                //...
+                print("Answer 3 is chosen!");
+              },
+            ),

@@ -27,9 +27,10 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     var questions = [
-      "How are you?",
-      "What is your name?",
-      "This is a very very very long question just for testing purposes!",
+      "How are you? This is question numer 1.",
+      "What is your name? This is question numer 2.",
+      "This is a very very very long question just for testing purposes! By the way this is a question numer 3.",
+      "This is a question number 4, again just for testing purposes",
     ];
 
     return MaterialApp(
@@ -46,25 +47,9 @@ class _MyAppState extends State<MyApp> {
               questions.elementAt(
                   _questionIndex), //this is equivalent to "questions[questionIndex],"
             ),
-            SizedBox(
-              width: double.infinity,
-              child: RaisedButton(
-                child: Text("Answer 1"),
-                onPressed: _answerQuestion,
-                color: Colors.limeAccent[400],
-              ),
-            ),
-            RaisedButton(
-              child: Text("Answer 2"),
-              onPressed: () => print("Answer 2 is chosen!"),
-            ),
-            RaisedButton(
-              child: Text("Answer 3"),
-              onPressed: () {
-                //...
-                print("Answer 3 is chosen!");
-              },
-            ),
+            Answer(_answerQuestion),
+            Answer(_answerQuestion),
+            Answer(_answerQuestion),
           ],
         ),
       ),
