@@ -27,10 +27,24 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     var questions = [
-      "How are you? This is question numer 1.",
-      "What is your name? This is question numer 2.",
-      "This is a very very very long question just for testing purposes! By the way this is a question numer 3.",
-      "This is a question number 4, again just for testing purposes",
+      {
+        "questionText": "How are you? This is question number 1.",
+        "answers": ["Good", "Bad", "So so", "I don't know"],
+      },
+      {
+        "questionText": "What is your name? This is question numer 2.",
+        "answers": ["Jack", "John", "Lui", "Sam"],
+      },
+      {
+        "questionText":
+            "Where are you from? This is a very very very long question just for testing purposes! By the way this is a question numer 3.",
+        "answers": ["Europe", "Asia", "Usa", "Africa"],
+      },
+      {
+        "questionText":
+            "What is your hobby? This is a question number 4, again just for testing purposes",
+        "answers": ["Drawing", "Signing", "Sleeping", "Drinking"],
+      },
     ];
 
     return MaterialApp(
@@ -44,12 +58,14 @@ class _MyAppState extends State<MyApp> {
         body: Column(
           children: <Widget>[
             Question(
-              questions.elementAt(
-                  _questionIndex), //this is equivalent to "questions[questionIndex],"
+              //questions.elementAt(questionIndex), //this is equivalent to "questions[questionIndex],"
+              questions[_questionIndex]['questionText'],
             ),
-            Answer(_answerQuestion),
-            Answer(_answerQuestion),
-            Answer(_answerQuestion),
+            //Answer(_answerQuestion),
+            ...(questions[_questionIndex]['answers'] as List<String>)
+                .map((answer) {
+              return Answer(_answerQuestion, answer);
+            }).toList()
           ],
         ),
       ),
