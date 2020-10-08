@@ -11,14 +11,18 @@ class Answer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      child: RaisedButton(
+      margin: EdgeInsets.all(1),
+      padding: EdgeInsets.all(0),
+      child: new MaterialButton(
+        //used RaisedButton but RaisedButton does not have height property for button
         child: Text(
           answerText,
-          style: TextStyle(fontSize: 22),
+          style: TextStyle(fontSize: 28),
         ),
         onPressed: selectHandler,
         color: Colors.limeAccent[400],
         textColor: Colors.black,
+        height: 68,
       ),
     );
   }

@@ -26,7 +26,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    var questions = [
+    const questions = [
       {
         "questionText": "How are you? This is question number 1.",
         "answers": ["Good", "Bad", "So so", "I don't know"],
@@ -47,10 +47,17 @@ class _MyAppState extends State<MyApp> {
       },
     ];
 
+    final dummy = ['Hello'];
+    dummy.add('Maximus');
+    print(dummy);
+
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text("Serious mobile application"),
+          title: Text(
+            "Serious Mobile Application",
+            style: TextStyle(fontSize: 28),
+          ),
           centerTitle: true,
           backgroundColor: Colors.pink,
           //backgroundColor: Color(0xFF151026),
