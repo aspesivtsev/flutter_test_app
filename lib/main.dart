@@ -26,7 +26,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    const questions = [
+    const questions = const [
       {
         "questionText": "How are you? This is question number 1.",
         "answers": ["Good", "Bad", "So so", "I don't know"],
