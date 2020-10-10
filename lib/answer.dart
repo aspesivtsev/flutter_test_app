@@ -9,10 +9,11 @@ class Answer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    var container = Container(
       width: double.infinity,
       margin: EdgeInsets.all(1),
       padding: EdgeInsets.all(0),
+      height: 78,
       child: new MaterialButton(
         //used RaisedButton but RaisedButton does not have height property for button
         child: Text(
@@ -22,8 +23,8 @@ class Answer extends StatelessWidget {
         onPressed: selectHandler,
         color: Colors.limeAccent[400],
         textColor: Colors.black,
-        height: 68,
       ),
     );
+    return container;
   }
 }

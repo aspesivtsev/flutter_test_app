@@ -29,7 +29,12 @@ class _MyAppState extends State<MyApp> {
     const questions = const [
       {
         "questionText": "How are you? This is question number 1.",
-        "answers": ["Good", "Bad", "So so", "I don't know"],
+        "answers": [
+          "Good",
+          "Bad",
+          "So so",
+          "I don't know really this is a very difficult question!"
+        ],
       },
       {
         "questionText": "What is your name? This is question numer 2.",
@@ -56,7 +61,7 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: Text(
             "Serious Mobile Application",
-            style: TextStyle(fontSize: 28),
+            style: TextStyle(fontSize: 25),
           ),
           centerTitle: true,
           backgroundColor: Colors.pink,
