@@ -14,6 +14,32 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  final questions = const [
+    {
+      "questionText": "How are you? This is question number 1.",
+      "answers": [
+        "Good",
+        "Bad",
+        "So so",
+        "I don't know really this is a very difficult question!"
+      ],
+    },
+    {
+      "questionText": "What is your name? This is question numer 2.",
+      "answers": ["Jack", "John", "Lui", "Sam"],
+    },
+    {
+      "questionText":
+          "Where are you from? This is a very very very long question just for testing purposes! By the way this is a question numer 3.",
+      "answers": ["Europe", "Asia", "Usa", "Africa"],
+    },
+    {
+      "questionText":
+          "What is your hobby? This is a question number 4, again just for testing purposes",
+      "answers": ["Drawing", "Signing", "Sleeping", "Drinking"],
+    },
+  ];
+
   var _questionIndex = 0;
 
   void _answerQuestion() {
@@ -22,36 +48,15 @@ class _MyAppState extends State<MyApp> {
     });
 
     print("Q index is " + _questionIndex.toString());
+    if (_questionIndex < questions.length) {
+      print("We have got more questions ahead");
+    } else {
+      print("No questions left");
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    const questions = const [
-      {
-        "questionText": "How are you? This is question number 1.",
-        "answers": [
-          "Good",
-          "Bad",
-          "So so",
-          "I don't know really this is a very difficult question!"
-        ],
-      },
-      {
-        "questionText": "What is your name? This is question numer 2.",
-        "answers": ["Jack", "John", "Lui", "Sam"],
-      },
-      {
-        "questionText":
-            "Where are you from? This is a very very very long question just for testing purposes! By the way this is a question numer 3.",
-        "answers": ["Europe", "Asia", "Usa", "Africa"],
-      },
-      {
-        "questionText":
-            "What is your hobby? This is a question number 4, again just for testing purposes",
-        "answers": ["Drawing", "Signing", "Sleeping", "Drinking"],
-      },
-    ];
-
     final dummy = ['Hello'];
     dummy.add('Maximus');
     print(dummy);
@@ -67,19 +72,23 @@ class _MyAppState extends State<MyApp> {
           backgroundColor: Colors.pink,
           //backgroundColor: Color(0xFF151026),
         ),
-        body: Column(
-          children: <Widget>[
-            Question(
-              //questions.elementAt(questionIndex), //this is equivalent to "questions[questionIndex],"
-              questions[_questionIndex]['questionText'],
-            ),
-            //Answer(_answerQuestion),
-            ...(questions[_questionIndex]['answers'] as List<String>)
-                .map((answer) {
-              return Answer(_answerQuestion, answer);
-            }).toList()
-          ],
-        ),
+        body: _questionIndex < questions.length
+            ? Column(
+                children: <Widget>[
+                  Question(
+                    //questions.elementAt(questionIndex), //this is equivalent to "questions[questionIndex],"
+                    questions[_questionIndex]['questionText'],
+                  ),
+                  //Answer(_answerQuestion),
+                  ...(questions[_questionIndex]['answers'] as List<String>)
+                      .map((answer) {
+                    return Answer(_answerQuestion, answer);
+                  }).toList()
+                ],
+              )
+            : Center(
+                child: Text("You did it!"),
+              ),
       ),
     );
   }

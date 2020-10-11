@@ -13,12 +13,15 @@ class Answer extends StatelessWidget {
       width: double.infinity,
       margin: EdgeInsets.all(1),
       padding: EdgeInsets.all(0),
-      height: 78,
+      height: 60,
       child: new MaterialButton(
         //used RaisedButton but RaisedButton does not have height property for button
         child: Text(
           answerText,
-          style: TextStyle(fontSize: 28),
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            fontSize: 20,
+          ),
         ),
         onPressed: selectHandler,
         color: Colors.limeAccent[400],
