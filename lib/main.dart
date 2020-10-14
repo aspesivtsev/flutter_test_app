@@ -18,31 +18,59 @@ class _MyAppState extends State<MyApp> {
     {
       "questionText": "How are you? This is question number 1.",
       "answers": [
-        "Good",
-        "Bad",
-        "So so",
-        "I don't know really this is a very difficult question!"
+        {"text": "Good", "score": 1},
+        {"text": "Bad", "score": 6},
+        {"text": "So so", "score": 4},
+        {
+          "text": "I don't know really this is a very difficult question!",
+          "score": 9
+        },
       ],
     },
     {
       "questionText": "What is your name? This is question numer 2.",
-      "answers": ["Jack", "John", "Lui", "Sam"],
+      "answers": [
+        {"text": "Jack", "score": 1},
+        {"text": "John", "score": 4},
+        {"text": "Lui", "score": 7},
+        {"text": "Sam", "score": 9},
+      ],
     },
     {
       "questionText":
           "Where are you from? This is a very very very long question just for testing purposes! By the way this is a question numer 3.",
-      "answers": ["Europe", "Asia", "Usa", "Africa"],
+      "answers": [
+        {"text": "USA", "score": 1},
+        {"text": "Europe", "score": 3},
+        {"text": "Asia", "score": 7},
+        {"text": "Africa", "score": 9},
+      ],
     },
     {
       "questionText":
           "What is your hobby? This is a question number 4, again just for testing purposes",
-      "answers": ["Drawing", "Signing", "Sleeping", "Drinking"],
+      "answers": [
+        {"text": "Programming", "score": 1},
+        {"text": "Singing", "score": 4},
+        {"text": "Sleeping", "score": 7},
+        {"text": "Drinking", "score": 9},
+      ],
     },
   ];
 
   var _questionIndex = 0;
+  var _totalScore = 0;
 
-  void _answerQuestion() {
+  void _resetQuiz() {
+    setState(() {
+      _questionIndex = 0;
+      _totalScore = 0;
+    });
+  }
+
+  void _answerQuestion(int score) {
+    _totalScore += score;
+
     setState(() {
       _questionIndex++;
     });
@@ -78,7 +106,7 @@ class _MyAppState extends State<MyApp> {
                 questionIndex: _questionIndex,
                 questions: _questions,
               )
-            : Result(),
+            : Result(_totalScore, _resetQuiz),
       ),
     );
   }
