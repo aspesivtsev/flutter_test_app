@@ -19,3 +19,16 @@ SizedBox(
             ),
             
             
+
+
+
+title: Row(
+          children: [
+            Icon(
+              Icons.favorite,
+              size: 38,
+              semanticLabel: 'Text to announce in accessibility modes',
+            ),
+            Text(widget.title),
+          ],
+        ),
